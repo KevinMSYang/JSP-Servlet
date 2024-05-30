@@ -1,0 +1,93 @@
+package net.javaguides.usermanagement.dao;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import net.javaguides.usermanagement.model.User;
+
+// This DAO class provides CRUD database operations for the table users in the databases
+public class UserDAO 
+{
+	private String jdbcURL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+	private String jdbcUsername = "root";
+	private String jdbcPassword = "null";
+	
+	private static final String INSERT_USERS_SQL = "INSERT INTO users" + "  (name, email, country) VALUES " + " (?, ?, ?);";
+	private static final String SELECT_USERS_BY_ID = "SELECT id, name, email, country FROM users WHERE id = ?;";
+	private static final String SELECT_ALL_USERS = "SELECT * FROM users;";
+	private static final String DELETE_USERS_SQL = "DELETE FROM users WHERE id = ?;";
+	private static final String UPDATE_USERS_SQL = "UPDATE users SET name = ?, email = ?, country = ?, WHERE id = ?;";
+	
+	protected Connection getConnection()
+	{
+		Connection connect = null;
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			connect = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		} catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+		
+		return connect;
+	}
+	
+	
+	// Create or insert users
+	public void insertUser(User user) throws SQLException
+	{
+		try (Connection connect = getConnection();
+				PreparedStatement predstate = connect.prepareStatement(INSERT_USERS_SQL))
+		{
+			predstate.setString(1, user.getName());
+			predstate.setString(2, user.getEmail());
+			predstate.setString(3, user.getCountry());
+			predstate.executeUpdate();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// Update users
+	public boolean updateUser(User user) throws SQLException
+	{
+		boolean rowUpdated;
+		try (Connection connect = getConnection();
+				PreparedStatement predstate = connect.prepareStatement(UPDATE_USERS_SQL))
+		{
+			predstate.setString(1, user.getName());
+			predstate.setString(2, user.getEmail());
+			predstate.setString(3, user.getCountry());
+			predstate.setInt(4, user.getId());
+			
+			rowUpdated = predstate.executeUpdate() > 0; 
+		} 
+		return rowUpdated;
+	}
+	
+	// Select users by id 
+	public User selectUser(int id)
+	{
+		User user = null;
+		// Setp 1: Establising a Connection
+		try (Connection connect = getConnection();
+				// Step 2: Create a statement using connection object
+				PreparedStatement predstate = connect.prepareStatement(SELECT_USERS_BY_ID);)
+		{
+			
+		} catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	// Select users
+	// Delete users
+}
