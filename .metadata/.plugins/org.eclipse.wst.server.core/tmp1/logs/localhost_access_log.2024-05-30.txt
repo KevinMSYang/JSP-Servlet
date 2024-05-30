@@ -22,3 +22,15 @@
 0:0:0:0:0:0:0:1 - - [30/May/2024:14:31:21 -0700] "POST /employee_management/insert HTTP/1.1" 302 -
 0:0:0:0:0:0:0:1 - - [30/May/2024:14:31:22 -0700] "GET /employee_management/list HTTP/1.1" 200 5704
 0:0:0:0:0:0:0:1 - - [30/May/2024:14:33:56 -0700] "GET /employee_management/list HTTP/1.1" 200 5704
+127.0.0.1 - - [30/May/2024:15:57:49 -0700] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [30/May/2024:15:57:51 -0700] "GET /registration_form/ HTTP/1.1" 404 773
+0:0:0:0:0:0:0:1 - - [30/May/2024:15:59:05 -0700] "GET /registration_form/register HTTP/1.1" 200 915
+0:0:0:0:0:0:0:1 - - [30/May/2024:15:59:47 -0700] "POST /registration_form/register HTTP/1.1" 200 168
+127.0.0.1 - - [30/May/2024:16:02:36 -0700] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [30/May/2024:16:02:37 -0700] "GET /registration_form/ HTTP/1.1" 404 773
+0:0:0:0:0:0:0:1 - - [30/May/2024:16:02:43 -0700] "GET /registration_form/register HTTP/1.1" 200 915
+0:0:0:0:0:0:0:1 - - [30/May/2024:16:02:52 -0700] "POST /registration_form/register HTTP/1.1" 200 168
+127.0.0.1 - - [30/May/2024:16:05:51 -0700] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [30/May/2024:16:05:52 -0700] "GET /registration_form/ HTTP/1.1" 404 773
+0:0:0:0:0:0:0:1 - - [30/May/2024:16:05:59 -0700] "GET /registration_form/register HTTP/1.1" 200 915
+0:0:0:0:0:0:0:1 - - [30/May/2024:16:06:08 -0700] "POST /registration_form/register HTTP/1.1" 200 168
